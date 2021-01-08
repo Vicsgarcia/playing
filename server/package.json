@@ -1,0 +1,8 @@
+{
+  "name": "Vicsgarcia",
+  "version": "0.0.1",
+  "description": "Backend Vicsgarcia web",
+  "main": "index.js",
+  "author": "VG",
+  "license": "MIT"
+}
