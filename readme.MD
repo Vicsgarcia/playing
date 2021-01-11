@@ -1,4 +1,4 @@
-#Website for practice with React
+# Server side for React practice
 
 
 Just for fun
