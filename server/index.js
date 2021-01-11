@@ -8,7 +8,8 @@ mongoose.set("useFindAndModify", false)
 
 mongoose.connect(`mongodb://${IP_SERVER}:${PORT_DB}/vicsgarcia`, {useNewUrlParser:true , useUnifiedTopology:true}, (err,res) =>{
     if(err){
-        throw error;
+        //throw error;
+        console.log("La conexion es incorrecta")
     } else{
         console.log("La conexion a la bbdd es correcta");
         app.listen(port, ()=>{
