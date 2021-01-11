@@ -4,7 +4,9 @@ const User= require("../models/user");
 function signUp(req, res){
     const user= new User();
 
-    const {email, password, repeatPassword} = req.body;
+    const {name, lastname, email, password, repeatPassword} = req.body;
+    user.name= name;
+    user.lastname=lastname;
     user.email = email;
     user.role= "admin";
     user.active=false;
@@ -22,7 +24,7 @@ function signUp(req, res){
                     user.password= hash;
                     user.save((err, userStored)=>{
                         if(err){
-                            res.status(500).send({message:"Error del Servidor"})
+                            res.status(500).send({message:"error del servidor"})
                         }else{
                             if(!userStored){
                                 res.status(404).send({message:"Error al crear el usuario"})
