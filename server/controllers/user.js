@@ -61,7 +61,11 @@ function signIn(req, res){
                 bcrypt.compare(password, userStored.password, (err, check)=>{
                     if(err){;
                         res.status(500).send({message:"Error del servidor"})
-                    } else{
+                    } else if(!check){
+                        res.status(404).send({message:"Contraseña incorrecta"})
+                    } 
+                    
+                    else{
                         if(!userStored.active){
                             res.status(200).send({code:200, message:"El usuario no se ha activado"});
                         }else{
