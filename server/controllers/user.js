@@ -48,7 +48,7 @@ function signUp(req, res){
 
 function signIn(req, res){
     const params = req.body;
-    const email= params.email.toLowerCase();
+    const email= params.email/*.toLowerCase()*/;
     const password= params.password;
 
     User.findOne({email}, (err, userStored) => {
