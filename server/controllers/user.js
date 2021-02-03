@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt-nodejs");
 const jwt = require("../services/jwt");
 const User= require("../models/user");
 const { use } = require("../routers/user");
+const { exists } = require("../models/user");
 
 
 
@@ -152,11 +153,24 @@ function uploadAvatar(req,res){
     })
 }
 
+function getAvatar(req, res){
+    const avatarName= req.params.avatarName;
+    const filePath= "./uploads/avatar/"+ avatarName;
+    fs.exists(filePath, exists =>{
+        if(!exists){
+            res.status(404).send({message:"El avatar no existe"})
+        } else{
+            res.sendFile(path.resolve(filePath));
+
+        }
+    })
+}
 
 module.exports={
     signUp,
     signIn,
     getUsers,
     getUsersActive,
-    uploadAvatar
+    uploadAvatar,
+    getAvatar
 };
