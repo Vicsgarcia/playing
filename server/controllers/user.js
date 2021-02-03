@@ -170,16 +170,16 @@ function updateUser(req, res){
     const userData= req.body;
     const params = req.params;
 
-    User.findByIdAndUpdate({_id: params.id}, userData, (err, userUpdate)=>{
+    User.findByIdAndUpdate({_id: params.id }, userData, (err, userUpdate)=>{
         if(err){
-            res.status(500).send({message:"Error del Servidor"})
+            res.status(500).send({message:"Error del Servidor"});
         } else{
             if(!userUpdate){
-                res.status(404).send({message:"No se ha encontrado el usuario"})
+                res.status(404).send({message:"No se ha encontrado el usuario"});
             }else{
-                res.status(200).send({message:"Usuario actualizado correctamente"})
-            };
-        };
+                res.status(200).send({message:"Usuario actualizado correctamente"});
+            }
+        }
     });
 }
 
