@@ -122,7 +122,31 @@ function uploadAvatar(req,res){
                 res.status(404).send({message:"No se ha encontrado ningun usuario"})
             } else{
                 let user = userData;
-                console.log(req.files);
+                if( req.files){
+                    let filePath= req.files.avatar.path;
+                    let fileSplit= filePath.split("/");
+                    let fileName = fileSplit[2];
+                    let extSplit = fileName.split(".");
+                    let fileExt= extSplit[1];
+
+                    if (fileExt !== "png" && fileExt!== "jpg"){
+                        res.status(400).send({message:"Formato de imagen no aceptado"})
+                    } else{
+                        user.avatar = fileName;
+                        User.findByIdAndUpdate({_id: params.id}, user, (err, userResult)=>{
+                            if(err){
+                                res.status(500).send({message:"Error del servidor"})
+                            } else{
+                                if(!userResult){
+                                    res.status(404).send({message:"Usuario no encontrado"})
+                                } else{
+                                    res.status(200).send({avatarName: fileName});
+                                }
+                            }
+                        })
+                    }
+
+                }
             }
         }
     })
