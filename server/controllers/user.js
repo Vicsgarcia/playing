@@ -101,7 +101,7 @@ function getUsers(req,res){
 }
 
 function getUsersActive(req,res){
-    console.log(req);
+    
     const query=req.query;
 
 
