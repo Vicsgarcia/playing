@@ -7,6 +7,7 @@ const {API_VERSION} = require('./config');
 //...load routing//
 const authRoutes = require("./routers/auth")
 const userRoutes = require("./routers/user")
+const menuRoutes = require("./routers/menu")
 
 
 
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 //BASIC ROUTES
 app.use(`/api/${API_VERSION}`,authRoutes)
 app.use(`/api/${API_VERSION}`, userRoutes)
+app.use(`/api/${API_VERSION}`, menuRoutes)
 
 
 
