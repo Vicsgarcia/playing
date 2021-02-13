@@ -1,11 +1,11 @@
 const mongoose= require('mongoose');
 const Schema = mongoose.Schema;
 
-const NewsLetterSchema = new Schema({
+const NewsletterSchema = Schema({
     email:{
         type: String,
         unique: true
     }
 })
 
-module.exports= mongoose.model("Newsletter", NewsLetterSchema);
+module.exports= mongoose.model("Newsletter", NewsletterSchema);
